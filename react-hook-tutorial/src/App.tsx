@@ -1,13 +1,12 @@
+import Users from "./users/components/Users";
 
-import './App.css'
 
-function App() {
+export default function App() {
 
   return (
     <>
-
+      <Users />
     </>
   )
 }
 
-export default App
