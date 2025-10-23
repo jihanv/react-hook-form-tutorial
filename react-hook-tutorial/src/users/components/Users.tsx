@@ -1,9 +1,12 @@
-import { useState } from "react"
-
+import { useForm } from "react-hook-form"
 export default function Users() {
 
-    const [input, setInput] = useState("")
+    const { register } = useForm<{ email: string }>()
+
+
     return (
-        <div><input value={input} onChange={(e) => setInput(e.target.value)} /></div>
+        <>
+            <input {...register("email")} />
+        </>
     )
 }
