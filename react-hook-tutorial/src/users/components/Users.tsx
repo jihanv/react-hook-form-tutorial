@@ -1,6 +1,6 @@
 
 export default function Users() {
     return (
-        <div>users</div>
+        <div><input /></div>
     )
 }
