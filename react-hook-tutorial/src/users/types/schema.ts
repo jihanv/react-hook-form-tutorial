@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { patterns } from "../../constants";
 
-export const userSchema = z.object({
+export const formSchema = z.object({
   name: z.string().min(1, { message: "Required" }),
   email: z
     .string()
@@ -19,4 +19,4 @@ export const userSchema = z.object({
 });
 
 //Convert schema into a type that can be used
-export type FormSchema = z.infer<typeof userSchema>;
+export type FormSchema = z.infer<typeof formSchema>;
