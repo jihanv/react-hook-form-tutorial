@@ -6,7 +6,17 @@ export default function Users() {
 
     return (
         <>
-            <input {...register("email")} />
+            <input {...register("email", {
+                required: {
+                    value: true,
+                    message: "Email is required",
+                },
+                maxLength: {
+                    value: 10,
+                    message: "Too many characters",
+                }
+            })}
+                placeholder="Email" />
         </>
     )
 }
