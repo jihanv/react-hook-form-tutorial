@@ -12,7 +12,7 @@ export default function Users() {
     // Automatically validate your form values against formSchema whenever a field changes or the form is submitted.
     // Collect any Zod validation errors(like invalid email, required field missing, etc.).
     // Populate them into formState.errors, so you can easily show messages to users.
-    const { register } = useForm<FormSchema>({
+    const { register, formState: { errors } } = useForm<FormSchema>({
         mode: "all",
         resolver: zodResolver(formSchema),
     },
@@ -23,9 +23,9 @@ export default function Users() {
     // handleSubmit(onSubmit) will only run if the form values are OK.
     return (
         <>
-            <Stack>
-                <TextField {...register("name")} label="Name"></TextField>
-                <TextField {...register("email")} label="Email"></TextField>
+            <Stack sx={{ gap: 2 }}>
+                <TextField {...register("name")} label="Name" error={!!errors.name} helperText={errors.name?.message}></TextField>
+                <TextField {...register("email")} label="Email" error={!!errors.email} helperText={errors.email?.message}></TextField>
             </Stack>
 
         </>
