@@ -1,11 +1,13 @@
 import { useForm } from "react-hook-form"
 export default function Users() {
 
-    const { register } = useForm<{ email: string }>()
+    const { register, formState: { errors }, handleSubmit } = useForm<{ email: string }>({ mode: "all" })
 
-
+    const onSubmit = () => {
+        console.log("submit")
+    }
     return (
-        <>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <input {...register("email", {
                 required: {
                     value: true,
@@ -17,6 +19,7 @@ export default function Users() {
                 }
             })}
                 placeholder="Email" />
-        </>
+            <p>{errors.email?.message}</p>
+        </form>
     )
 }
