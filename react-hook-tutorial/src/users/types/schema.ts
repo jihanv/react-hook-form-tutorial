@@ -1,6 +1,12 @@
 import { z } from "zod";
+import { patterns } from "../../constants";
 
 export const schema = z.object({
   name: z.string().min(1, { message: "Required" }),
-  email: z.string().min(1, { message: "Email is required" }),
+  email: z
+    .string()
+    .min(1, { message: "Email is required" })
+    .refine((userInput) => {
+      return patterns.email.test(userInput);
+    }),
 });
